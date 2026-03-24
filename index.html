@@ -666,98 +666,196 @@
             line-height: 1.7;
         }
 
-        /* Roadmap - Headspace style */
-        .roadmap-section {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 24px;
-        }
-
-        @media (max-width: 768px) {
-            .roadmap-section {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .roadmap-card {
+        /* Timeline Roadmap */
+        .timeline-container {
             background: var(--background-white);
             border: 1px solid var(--border-gray);
-            border-radius: var(--radius-lg);
-            padding: 28px;
+            border-radius: var(--radius-xl);
+            padding: 40px;
             box-shadow: var(--shadow-soft);
         }
 
-        .roadmap-header {
+        .timeline-header {
             display: flex;
             align-items: center;
-            gap: 14px;
-            margin-bottom: 24px;
-            padding-bottom: 20px;
+            justify-content: center;
+            gap: 0;
+            margin-bottom: 48px;
+            padding-bottom: 40px;
             border-bottom: 1px solid var(--border-gray);
         }
 
-        .roadmap-badge {
-            padding: 8px 18px;
-            border-radius: var(--radius-full);
-            font-size: 0.875rem;
-            font-weight: 600;
-        }
-
-        .roadmap-badge.thirty {
-            background: var(--soft-blue);
-            color: var(--primary-blue);
-        }
-
-        .roadmap-badge.ninety {
-            background: var(--peach);
-            color: var(--coral);
-        }
-
-        .roadmap-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: var(--dark-text);
-        }
-
-        .roadmap-list {
-            list-style: none;
-        }
-
-        .roadmap-list li {
+        .timeline-phase {
             display: flex;
-            gap: 14px;
-            padding: 12px 0;
-            color: var(--secondary-text);
-            border-bottom: 1px solid var(--border-gray);
-            align-items: flex-start;
+            align-items: center;
+            gap: 16px;
         }
 
-        .roadmap-list li:last-child {
-            border-bottom: none;
-        }
-
-        .roadmap-check {
-            width: 24px;
-            height: 24px;
+        .phase-marker {
+            width: 48px;
+            height: 48px;
+            background: var(--primary-blue);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            flex-shrink: 0;
-            margin-top: 2px;
+            box-shadow: 0 4px 12px rgba(0, 97, 239, 0.3);
         }
 
-        .roadmap-check.blue {
+        .phase-marker.orange {
+            background: var(--coral);
+            box-shadow: 0 4px 12px rgba(244, 123, 103, 0.3);
+        }
+
+        .phase-number {
+            color: white;
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .phase-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .phase-duration {
+            font-size: 0.75rem;
+            color: var(--tertiary-text);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 600;
+        }
+
+        .phase-name {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--dark-text);
+        }
+
+        .timeline-connector {
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--coral));
+            margin: 0 24px;
+            border-radius: 2px;
+        }
+
+        .phase-section {
+            margin-bottom: 40px;
+        }
+
+        .phase-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .phase-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 20px;
+            border-radius: var(--radius-full);
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .phase-label.blue {
             background: var(--soft-blue);
+            color: var(--primary-blue);
         }
 
-        .roadmap-check.peach {
+        .phase-label.orange {
             background: var(--peach);
+            color: var(--coral);
         }
 
-        .roadmap-check svg {
-            width: 14px;
-            height: 14px;
+        .task-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+        }
+
+        .task-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            padding: 20px;
+            background: var(--background-cream);
+            border-radius: var(--radius-lg);
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .task-card:hover {
+            background: var(--background-white);
+            border-color: var(--primary-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 97, 239, 0.1);
+        }
+
+        .task-card.orange:hover {
+            border-color: var(--coral);
+            box-shadow: 0 8px 24px rgba(244, 123, 103, 0.1);
+        }
+
+        .task-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .task-icon.blue {
+            background: var(--soft-blue);
+            color: var(--primary-blue);
+        }
+
+        .task-icon.orange {
+            background: var(--peach);
+            color: var(--coral);
+        }
+
+        .task-icon svg {
+            width: 22px;
+            height: 22px;
+        }
+
+        .task-content h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--dark-text);
+            margin-bottom: 4px;
+        }
+
+        .task-content p {
+            font-size: 0.875rem;
+            color: var(--secondary-text);
+            line-height: 1.5;
+        }
+
+        @media (max-width: 768px) {
+            .timeline-container {
+                padding: 24px;
+            }
+
+            .timeline-header {
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            .timeline-connector {
+                width: 3px;
+                height: 40px;
+                margin: 0;
+            }
+
+            .task-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         /* Page Recommendations */
@@ -1941,62 +2039,140 @@
                     <h2 class="section-title">Improvement Plan</h2>
                     <p class="section-description">A phased approach to transformation.</p>
                 </div>
-                <div class="roadmap-section">
-                    <div class="roadmap-card">
-                        <div class="roadmap-header">
-                            <span class="roadmap-badge thirty">30 Days</span>
-                            <h3 class="roadmap-title">Quick Wins</h3>
+
+                <!-- Timeline Visual -->
+                <div class="timeline-container">
+                    <!-- Timeline Header -->
+                    <div class="timeline-header">
+                        <div class="timeline-phase active">
+                            <div class="phase-marker">
+                                <span class="phase-number">1</span>
+                            </div>
+                            <div class="phase-info">
+                                <span class="phase-duration">Days 1-30</span>
+                                <span class="phase-name">Quick Wins</span>
+                            </div>
                         </div>
-                        <ul class="roadmap-list">
-                            <li>
-                                <span class="roadmap-check blue"><svg fill="#0061EF" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span>
-                                Rewrite homepage hero and value proposition
-                            </li>
-                            <li>
-                                <span class="roadmap-check blue"><svg fill="#0061EF" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span>
-                                Clean up category naming and navigation
-                            </li>
-                            <li>
-                                <span class="roadmap-check blue"><svg fill="#0061EF" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span>
-                                Hide or deprioritize sold-out products
-                            </li>
-                            <li>
-                                <span class="roadmap-check blue"><svg fill="#0061EF" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span>
-                                Add proof blocks to top pages
-                            </li>
-                            <li>
-                                <span class="roadmap-check blue"><svg fill="#0061EF" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span>
-                                Improve top 3 product pages
-                            </li>
-                        </ul>
+                        <div class="timeline-connector"></div>
+                        <div class="timeline-phase">
+                            <div class="phase-marker orange">
+                                <span class="phase-number">2</span>
+                            </div>
+                            <div class="phase-info">
+                                <span class="phase-duration">Days 31-90</span>
+                                <span class="phase-name">Strategic Build</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="roadmap-card">
-                        <div class="roadmap-header">
-                            <span class="roadmap-badge ninety">90 Days</span>
-                            <h3 class="roadmap-title">Strategic Build</h3>
+
+                    <!-- Phase 1 Tasks -->
+                    <div class="phase-section">
+                        <div class="phase-label blue">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                            Phase 1: Quick Wins
                         </div>
-                        <ul class="roadmap-list">
-                            <li>
-                                <span class="roadmap-check peach"><svg fill="#F47B67" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></span>
-                                Build full trust system: reviews, certifications, routines
-                            </li>
-                            <li>
-                                <span class="roadmap-check peach"><svg fill="#F47B67" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></span>
-                                Launch bundles inspired by clinic use cases
-                            </li>
-                            <li>
-                                <span class="roadmap-check peach"><svg fill="#F47B67" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></span>
-                                Create concern-based merchandising paths
-                            </li>
-                            <li>
-                                <span class="roadmap-check peach"><svg fill="#F47B67" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></span>
-                                Standardize premium visual treatment
-                            </li>
-                            <li>
-                                <span class="roadmap-check peach"><svg fill="#F47B67" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></span>
-                                Build educational content that leads to shopping
-                            </li>
-                        </ul>
+                        <div class="task-grid">
+                            <div class="task-card">
+                                <div class="task-icon blue">
+                                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+                                </div>
+                                <div class="task-content">
+                                    <h4>Homepage Refresh</h4>
+                                    <p>Rewrite hero and value proposition for instant clarity</p>
+                                </div>
+                            </div>
+                            <div class="task-card">
+                                <div class="task-icon blue">
+                                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z"/></svg>
+                                </div>
+                                <div class="task-content">
+                                    <h4>Navigation Cleanup</h4>
+                                    <p>Simplify category naming and improve structure</p>
+                                </div>
+                            </div>
+                            <div class="task-card">
+                                <div class="task-icon blue">
+                                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+                                </div>
+                                <div class="task-content">
+                                    <h4>Inventory Management</h4>
+                                    <p>Hide sold-out products, add availability filters</p>
+                                </div>
+                            </div>
+                            <div class="task-card">
+                                <div class="task-icon blue">
+                                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+                                </div>
+                                <div class="task-content">
+                                    <h4>Trust Signals</h4>
+                                    <p>Add proof blocks with reviews and testimonials</p>
+                                </div>
+                            </div>
+                            <div class="task-card">
+                                <div class="task-icon blue">
+                                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z"/></svg>
+                                </div>
+                                <div class="task-content">
+                                    <h4>Product Pages</h4>
+                                    <p>Enhance top 3 pages with full details and FAQs</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Phase 2 Tasks -->
+                    <div class="phase-section">
+                        <div class="phase-label orange">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            Phase 2: Strategic Build
+                        </div>
+                        <div class="task-grid">
+                            <div class="task-card orange">
+                                <div class="task-icon orange">
+                                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                                </div>
+                                <div class="task-content">
+                                    <h4>Trust System</h4>
+                                    <p>Reviews, certifications, and practitioner proof</p>
+                                </div>
+                            </div>
+                            <div class="task-card orange">
+                                <div class="task-icon orange">
+                                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 6h-2.18c.11-.31.18-.65.18-1 0-1.66-1.34-3-3-3-1.05 0-1.96.54-2.5 1.35l-.5.67-.5-.68C10.96 2.54 10.05 2 9 2 7.34 2 6 3.34 6 5c0 .35.07.69.18 1H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2z"/></svg>
+                                </div>
+                                <div class="task-content">
+                                    <h4>Product Bundles</h4>
+                                    <p>Launch curated routines from clinic use cases</p>
+                                </div>
+                            </div>
+                            <div class="task-card orange">
+                                <div class="task-icon orange">
+                                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 9h-4v4h-2v-4H9V9h4V5h2v4h4v2z"/></svg>
+                                </div>
+                                <div class="task-content">
+                                    <h4>Smart Merchandising</h4>
+                                    <p>Concern-based paths and personalization</p>
+                                </div>
+                            </div>
+                            <div class="task-card orange">
+                                <div class="task-icon orange">
+                                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9c.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.38-.61-.38-.99 0-.83.67-1.5 1.5-1.5H16c2.76 0 5-2.24 5-5 0-4.42-4.03-8-9-8z"/></svg>
+                                </div>
+                                <div class="task-content">
+                                    <h4>Visual Upgrade</h4>
+                                    <p>Standardize premium treatment across all pages</p>
+                                </div>
+                            </div>
+                            <div class="task-card orange">
+                                <div class="task-icon orange">
+                                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z"/></svg>
+                                </div>
+                                <div class="task-content">
+                                    <h4>Content Strategy</h4>
+                                    <p>Educational content that drives shopping</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
