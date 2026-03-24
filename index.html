@@ -452,54 +452,19 @@
             font-weight: 600;
         }
 
-        /* Headspace-style illustration */
-        .illustration-container {
+        /* Hero website image */
+        .hero-image-container {
+            margin: 40px 0;
             display: flex;
             justify-content: center;
-            margin: 40px 0;
         }
 
-        .illustration {
-            position: relative;
-            width: 200px;
-            height: 200px;
-        }
-
-        .illustration .circle {
-            position: absolute;
-            border-radius: 50%;
-            animation: float 6s ease-in-out infinite;
-        }
-
-        .illustration .circle-1 {
-            width: 120px;
-            height: 120px;
-            background: var(--soft-blue);
-            top: 20px;
-            left: 20px;
-        }
-
-        .illustration .circle-2 {
-            width: 80px;
-            height: 80px;
-            background: var(--peach);
-            top: 60px;
-            right: 10px;
-            animation-delay: -2s;
-        }
-
-        .illustration .circle-3 {
-            width: 60px;
-            height: 60px;
-            background: var(--mint);
-            bottom: 20px;
-            left: 40px;
-            animation-delay: -4s;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+        .hero-website-img {
+            max-width: 100%;
+            width: 540px;
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-medium);
+            border: 1px solid var(--border-gray);
         }
 
         /* Grid Layouts */
@@ -1127,6 +1092,11 @@
         .bento-card.collections .bento-decorative { color: #2A9D8F; }
         .bento-card.products .bento-decorative { color: #7C3AED; }
 
+        .bento-card:hover .bento-decorative {
+            opacity: 0.12;
+            transform: scale(1.1) rotate(5deg);
+        }
+
         .bento-decorative svg {
             width: 120px;
             height: 120px;
@@ -1494,7 +1464,7 @@
             animation: slideDown 0.7s ease-out 0.4s both;
         }
 
-        .illustration-container {
+        .hero-image-container {
             animation: scaleIn 0.8s ease-out 0.5s both;
         }
 
@@ -1609,12 +1579,8 @@
                 <h1>tZO Natural<br><span>Website Critique</span></h1>
                 <p class="hero-subtitle">A friendly deep-dive into brand positioning, digital experience, and opportunities for growth.</p>
 
-                <div class="illustration-container">
-                    <div class="illustration">
-                        <div class="circle circle-1"></div>
-                        <div class="circle circle-2"></div>
-                        <div class="circle circle-3"></div>
-                    </div>
+                <div class="hero-image-container">
+                    <img src="tzo-website.png" alt="tZO Natural Website" class="hero-website-img" />
                 </div>
 
                 <div class="hero-meta">
