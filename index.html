@@ -260,6 +260,79 @@
             fill: var(--secondary-text);
         }
 
+        /* Table of Contents */
+        .toc {
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid var(--border-gray);
+        }
+
+        .toc-title {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--tertiary-text);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+
+        .toc-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .toc-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 20px;
+            background: var(--background-cream);
+            border-radius: var(--radius-full);
+            text-decoration: none;
+            transition: all 0.2s ease;
+            border: 1px solid transparent;
+        }
+
+        .toc-item:hover {
+            background: var(--background-white);
+            border-color: var(--primary-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 97, 239, 0.1);
+        }
+
+        .toc-number {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            background: var(--soft-blue);
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .toc-label {
+            font-size: 0.9375rem;
+            font-weight: 500;
+            color: var(--dark-text);
+        }
+
+        @media (max-width: 768px) {
+            .toc-grid {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .toc-item {
+                justify-content: flex-start;
+            }
+        }
+
         /* Sections */
         .section {
             padding: 60px 0;
@@ -1406,13 +1479,6 @@
             <div class="nav-brand">
                 <img src="tzo-logo.avif" alt="tZO Natural" class="nav-logo" />
             </div>
-            <ul class="nav-links">
-                <li><a href="#executive">Summary</a></li>
-                <li><a href="#analysis">Analysis</a></li>
-                <li><a href="#competitors">Competitors</a></li>
-                <li><a href="#recommendations">Recommendations</a></li>
-                <li><a href="#roadmap">Roadmap</a></li>
-            </ul>
         </div>
     </nav>
 
@@ -1454,6 +1520,33 @@
                             <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
                         </div>
                         Premium Wellness
+                    </div>
+                </div>
+
+                <!-- Table of Contents -->
+                <div class="toc">
+                    <h3 class="toc-title">In this report</h3>
+                    <div class="toc-grid">
+                        <a href="#executive" class="toc-item">
+                            <span class="toc-number">01</span>
+                            <span class="toc-label">Executive Summary</span>
+                        </a>
+                        <a href="#analysis" class="toc-item">
+                            <span class="toc-number">02</span>
+                            <span class="toc-label">Website Analysis</span>
+                        </a>
+                        <a href="#competitors" class="toc-item">
+                            <span class="toc-number">06</span>
+                            <span class="toc-label">Competitive Landscape</span>
+                        </a>
+                        <a href="#recommendations" class="toc-item">
+                            <span class="toc-number">07</span>
+                            <span class="toc-label">Recommendations</span>
+                        </a>
+                        <a href="#roadmap" class="toc-item">
+                            <span class="toc-number">09</span>
+                            <span class="toc-label">Improvement Plan</span>
+                        </a>
                     </div>
                 </div>
             </section>
