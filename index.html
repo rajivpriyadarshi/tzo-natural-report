@@ -357,7 +357,7 @@
         .section-title {
             font-size: 2.25rem;
             font-weight: 700;
-            margin-bottom: 12px;
+            margin-bottom: 0;
             color: var(--dark-text);
         }
 
@@ -931,107 +931,243 @@
             }
         }
 
-        /* Page Recommendations */
-        .page-rec {
-            background: var(--background-white);
+        /* Page Recommendations - Bento Grid */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 20px;
+        }
+
+        .bento-card {
+            position: relative;
+            border-radius: var(--radius-xl);
+            padding: 32px;
+            overflow: hidden;
+            min-height: 320px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .bento-card.homepage {
+            grid-column: span 7;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
             border: 1px solid var(--border-gray);
-            border-radius: var(--radius-lg);
-            padding: 28px;
-            margin-bottom: 20px;
-            box-shadow: var(--shadow-soft);
-        }
-
-        .page-rec-header {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            margin-bottom: 20px;
-        }
-
-        .page-rec-icon {
-            width: 44px;
-            height: 44px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: var(--radius-md);
-        }
-
-        .page-rec-icon svg {
-            width: 22px;
-            height: 22px;
-        }
-
-        .page-rec-title {
-            font-size: 1.125rem;
-            font-weight: 600;
             color: var(--dark-text);
         }
 
-        .page-rec-list {
-            list-style: none;
-            counter-reset: step;
+        .bento-card.about {
+            grid-column: span 5;
+            background: linear-gradient(135deg, #fdf8f6 0%, #f9f1ed 100%);
+            border: 1px solid var(--border-gray);
+            color: var(--dark-text);
         }
 
-        .page-rec-list li {
-            display: flex;
-            align-items: flex-start;
-            gap: 16px;
-            padding: 14px 0;
-            color: var(--secondary-text);
-            border-bottom: 1px solid var(--border-gray);
-            opacity: 0;
-            transform: translateX(-10px);
-            transition: opacity 0.4s ease, transform 0.4s ease, background 0.2s ease;
+        .bento-card.collections {
+            grid-column: span 5;
+            background: linear-gradient(135deg, #f0f9f8 0%, #e8f4f3 100%);
+            border: 1px solid var(--border-gray);
+            color: var(--dark-text);
         }
 
-        .page-rec-list li:last-child {
-            border-bottom: none;
+        .bento-card.products {
+            grid-column: span 7;
+            background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%);
+            border: 1px solid var(--border-gray);
+            color: var(--dark-text);
         }
 
-        .page-rec-list li:hover {
-            background: var(--background-cream);
-            margin: 0 -16px;
-            padding-left: 16px;
-            padding-right: 16px;
-            border-radius: 8px;
+        .bento-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.02);
+            pointer-events: none;
         }
 
-        /* Step number */
-        .page-rec-list li::before {
-            counter-increment: step;
-            content: counter(step);
-            flex-shrink: 0;
-            width: 28px;
-            height: 28px;
-            display: flex;
+        .bento-card::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.015);
+            pointer-events: none;
+        }
+
+        .bento-header {
+            position: relative;
+            z-index: 1;
+            margin-bottom: 24px;
+        }
+
+        .bento-label {
+            display: inline-flex;
             align-items: center;
-            justify-content: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: rgba(0, 0, 0, 0.06);
+            border-radius: var(--radius-full);
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 16px;
+            color: var(--tertiary-text);
+        }
+
+        .bento-card.homepage .bento-label {
             background: var(--soft-blue);
             color: var(--primary-blue);
-            font-size: 0.8125rem;
-            font-weight: 600;
-            border-radius: 50%;
+        }
+
+        .bento-card.about .bento-label {
+            background: var(--peach);
+            color: var(--coral);
+        }
+
+        .bento-card.collections .bento-label {
+            background: #D4F0EB;
+            color: #2A9D8F;
+        }
+
+        .bento-card.products .bento-label {
+            background: #E8E0F0;
+            color: #7C3AED;
+        }
+
+        .bento-label svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .bento-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            line-height: 1.2;
+        }
+
+        .bento-subtitle {
+            color: var(--tertiary-text);
+            font-size: 0.9375rem;
+        }
+
+        .bento-items {
+            position: relative;
+            z-index: 1;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: auto;
+        }
+
+        .bento-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            border-radius: var(--radius-md);
+            font-size: 0.9375rem;
+            color: var(--secondary-text);
             transition: all 0.3s ease;
         }
 
-        .page-rec-list li:hover::before {
-            background: var(--primary-blue);
-            color: white;
-            transform: scale(1.1);
+        .bento-item:hover {
+            background: rgba(255, 255, 255, 0.95);
+            transform: translateX(4px);
+            border-color: rgba(0, 0, 0, 0.08);
         }
 
-        /* Animation when in view */
-        .page-rec.in-view .page-rec-list li {
-            opacity: 1;
-            transform: translateX(0);
+        .bento-item-number {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 700;
+            flex-shrink: 0;
         }
 
-        .page-rec.in-view .page-rec-list li:nth-child(1) { transition-delay: 0.1s; }
-        .page-rec.in-view .page-rec-list li:nth-child(2) { transition-delay: 0.18s; }
-        .page-rec.in-view .page-rec-list li:nth-child(3) { transition-delay: 0.26s; }
-        .page-rec.in-view .page-rec-list li:nth-child(4) { transition-delay: 0.34s; }
-        .page-rec.in-view .page-rec-list li:nth-child(5) { transition-delay: 0.42s; }
+        .bento-card.homepage .bento-item-number {
+            background: var(--soft-blue);
+            color: var(--primary-blue);
+        }
+
+        .bento-card.about .bento-item-number {
+            background: var(--peach);
+            color: var(--coral);
+        }
+
+        .bento-card.collections .bento-item-number {
+            background: #D4F0EB;
+            color: #2A9D8F;
+        }
+
+        .bento-card.products .bento-item-number {
+            background: #E8E0F0;
+            color: #7C3AED;
+        }
+
+        .bento-decorative {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            opacity: 0.06;
+            z-index: 0;
+            transition: all 0.5s ease;
+        }
+
+        .bento-card.homepage .bento-decorative { color: var(--primary-blue); }
+        .bento-card.about .bento-decorative { color: var(--coral); }
+        .bento-card.collections .bento-decorative { color: #2A9D8F; }
+        .bento-card.products .bento-decorative { color: #7C3AED; }
+
+        .bento-decorative svg {
+            width: 120px;
+            height: 120px;
+        }
+
+        @media (max-width: 1024px) {
+            .bento-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .bento-card {
+                grid-column: span 1 !important;
+                min-height: 280px;
+            }
+
+            .bento-title {
+                font-size: 1.25rem;
+            }
+        }
+
+        /* Bento card hover animations */
+        .bento-card {
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .bento-card:hover {
+            transform: translateY(-8px) scale(1.01);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+        }
+
+        .bento-card:hover .bento-decorative {
+            opacity: 0.1;
+            transform: scale(1.1) rotate(5deg);
+            transition: all 0.5s ease;
+        }
 
         /* CTA Card */
         .cta-card {
@@ -2080,48 +2216,130 @@
                     <p class="section-description">Specific improvements for each key page.</p>
                 </div>
 
-                <div class="page-rec">
-                    <div class="page-rec-header">
-                        <div class="page-rec-icon" style="background: var(--soft-blue);">
-                            <svg fill="#0061EF" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+                <div class="bento-grid">
+                    <!-- Homepage Card -->
+                    <div class="bento-card homepage">
+                        <div class="bento-decorative">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
                         </div>
-                        <h3 class="page-rec-title">Homepage</h3>
+                        <div class="bento-header">
+                            <div class="bento-label">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+                                Homepage
+                            </div>
+                            <h3 class="bento-title">First Impressions Matter</h3>
+                            <p class="bento-subtitle">Sharpen the hero to convert visitors instantly</p>
+                        </div>
+                        <div class="bento-items">
+                            <div class="bento-item">
+                                <span class="bento-item-number">1</span>
+                                Replace broad storytelling with sharper opening
+                            </div>
+                            <div class="bento-item">
+                                <span class="bento-item-number">2</span>
+                                Add "Start Here" or "Shop Bestsellers" near top
+                            </div>
+                            <div class="bento-item">
+                                <span class="bento-item-number">3</span>
+                                Add proof blocks: reviews, clinic heritage
+                            </div>
+                            <div class="bento-item">
+                                <span class="bento-item-number">4</span>
+                                Reduce copy density for faster conversion
+                            </div>
+                        </div>
                     </div>
-                    <ul class="page-rec-list">
-                        <li>Replace broad storytelling with sharper opening statement</li>
-                        <li>Introduce "Start Here" or "Shop Bestsellers" near the top</li>
-                        <li>Add visible proof blocks: reviews, clinic heritage, testimonials</li>
-                        <li>Reduce copy density so conversion pathways surface faster</li>
-                    </ul>
-                </div>
 
-                <div class="page-rec">
-                    <div class="page-rec-header">
-                        <div class="page-rec-icon" style="background: var(--peach);">
-                            <svg fill="#F47B67" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                    <!-- About Card -->
+                    <div class="bento-card about">
+                        <div class="bento-decorative">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
                         </div>
-                        <h3 class="page-rec-title">About Page</h3>
+                        <div class="bento-header">
+                            <div class="bento-label">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                                About Page
+                            </div>
+                            <h3 class="bento-title">Build Trust & Authority</h3>
+                            <p class="bento-subtitle">Strengthen the founder story with proof</p>
+                        </div>
+                        <div class="bento-items">
+                            <div class="bento-item">
+                                <span class="bento-item-number">1</span>
+                                Keep founder story, add structured proof
+                            </div>
+                            <div class="bento-item">
+                                <span class="bento-item-number">2</span>
+                                Clarify clinic credentials
+                            </div>
+                            <div class="bento-item">
+                                <span class="bento-item-number">3</span>
+                                Add product development philosophy
+                            </div>
+                        </div>
                     </div>
-                    <ul class="page-rec-list">
-                        <li>Keep founder story, add more structured proof</li>
-                        <li>Clarify professional background and clinic credentials</li>
-                        <li>Add methodology section on product development philosophy</li>
-                    </ul>
-                </div>
 
-                <div class="page-rec">
-                    <div class="page-rec-header">
-                        <div class="page-rec-icon" style="background: #D4F0EB;">
-                            <svg fill="#2A9D8F" viewBox="0 0 24 24"><path d="M4 8h4V4H4v4zm6 12h4v-4h-4v4zm-6 0h4v-4H4v4zm0-6h4v-4H4v4zm6 0h4v-4h-4v4zm6-10v4h4V4h-4zm-6 4h4V4h-4v4zm6 6h4v-4h-4v4zm0 6h4v-4h-4v4z"/></svg>
+                    <!-- Collections Card -->
+                    <div class="bento-card collections">
+                        <div class="bento-decorative">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 8h4V4H4v4zm6 12h4v-4h-4v4zm-6 0h4v-4H4v4zm0-6h4v-4H4v4zm6 0h4v-4h-4v4zm6-10v4h4V4h-4zm-6 4h4V4h-4v4zm6 6h4v-4h-4v4zm0 6h4v-4h-4v4z"/></svg>
                         </div>
-                        <h3 class="page-rec-title">Collections & Products</h3>
+                        <div class="bento-header">
+                            <div class="bento-label">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 8h4V4H4v4zm6 12h4v-4h-4v4zm-6 0h4v-4H4v4zm0-6h4v-4H4v4zm6 0h4v-4h-4v4zm6-10v4h4V4h-4zm-6 4h4V4h-4v4zm6 6h4v-4h-4v4zm0 6h4v-4h-4v4z"/></svg>
+                                Collections
+                            </div>
+                            <h3 class="bento-title">Simplify Navigation</h3>
+                            <p class="bento-subtitle">Make browsing intuitive and clear</p>
+                        </div>
+                        <div class="bento-items">
+                            <div class="bento-item">
+                                <span class="bento-item-number">1</span>
+                                Simplify naming, add explainers
+                            </div>
+                            <div class="bento-item">
+                                <span class="bento-item-number">2</span>
+                                Hide sold-out items, add filters
+                            </div>
+                            <div class="bento-item">
+                                <span class="bento-item-number">3</span>
+                                Add Bestseller & New badges
+                            </div>
+                        </div>
                     </div>
-                    <ul class="page-rec-list">
-                        <li>Simplify naming and add explainer text under each collection</li>
-                        <li>Remove/deprioritize sold-out products; add filters</li>
-                        <li>Add badges: "Bestseller", "Clinic Favorite", "New"</li>
-                        <li>Show full ingredients, add "Why it works" section</li>
-                    </ul>
+
+                    <!-- Products Card -->
+                    <div class="bento-card products">
+                        <div class="bento-decorative">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+                        </div>
+                        <div class="bento-header">
+                            <div class="bento-label">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+                                Product Pages
+                            </div>
+                            <h3 class="bento-title">Educate & Convert</h3>
+                            <p class="bento-subtitle">Give shoppers all the info they need</p>
+                        </div>
+                        <div class="bento-items">
+                            <div class="bento-item">
+                                <span class="bento-item-number">1</span>
+                                Show full ingredients with benefits
+                            </div>
+                            <div class="bento-item">
+                                <span class="bento-item-number">2</span>
+                                Add "Why it works" section
+                            </div>
+                            <div class="bento-item">
+                                <span class="bento-item-number">3</span>
+                                Include usage instructions & FAQs
+                            </div>
+                            <div class="bento-item">
+                                <span class="bento-item-number">4</span>
+                                Add customer reviews & testimonials
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
 
@@ -2323,7 +2541,6 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const reveals = document.querySelectorAll('.reveal');
-            const pageRecs = document.querySelectorAll('.page-rec');
 
             const revealOnScroll = () => {
                 reveals.forEach(el => {
@@ -2333,17 +2550,6 @@
 
                     if (elementTop < windowHeight - revealPoint) {
                         el.classList.add('visible');
-                    }
-                });
-
-                // Timeline animation for page recommendations
-                pageRecs.forEach(el => {
-                    const windowHeight = window.innerHeight;
-                    const elementTop = el.getBoundingClientRect().top;
-                    const revealPoint = 100;
-
-                    if (elementTop < windowHeight - revealPoint) {
-                        el.classList.add('in-view');
                     }
                 });
             };
