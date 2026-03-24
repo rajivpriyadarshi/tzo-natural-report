@@ -1078,14 +1078,8 @@
             border-radius: var(--radius-md);
             font-size: 0.9375rem;
             color: var(--secondary-text);
-            transition: all 0.3s ease;
         }
 
-        .bento-item:hover {
-            background: rgba(255, 255, 255, 0.95);
-            transform: translateX(4px);
-            border-color: rgba(0, 0, 0, 0.08);
-        }
 
         .bento-item-number {
             width: 24px;
@@ -1153,21 +1147,6 @@
             }
         }
 
-        /* Bento card hover animations */
-        .bento-card {
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-        }
-
-        .bento-card:hover {
-            transform: translateY(-8px) scale(1.01);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
-        }
-
-        .bento-card:hover .bento-decorative {
-            opacity: 0.1;
-            transform: scale(1.1) rotate(5deg);
-            transition: all 0.5s ease;
-        }
 
         /* CTA Card */
         .cta-card {
@@ -1669,7 +1648,19 @@
                         </a>
                         <a href="#analysis" class="toc-item">
                             <span class="toc-number">02</span>
-                            <span class="toc-label">Website Analysis</span>
+                            <span class="toc-label">Website Summary</span>
+                        </a>
+                        <a href="#products" class="toc-item">
+                            <span class="toc-number">03</span>
+                            <span class="toc-label">Products & Customers</span>
+                        </a>
+                        <a href="#strengths" class="toc-item">
+                            <span class="toc-number">04</span>
+                            <span class="toc-label">Strengths</span>
+                        </a>
+                        <a href="#critique" class="toc-item">
+                            <span class="toc-number">05</span>
+                            <span class="toc-label">Areas for Improvement</span>
                         </a>
                         <a href="#competitors" class="toc-item">
                             <span class="toc-number">06</span>
@@ -1677,11 +1668,19 @@
                         </a>
                         <a href="#recommendations" class="toc-item">
                             <span class="toc-number">07</span>
-                            <span class="toc-label">Recommendations</span>
+                            <span class="toc-label">Focus Areas</span>
+                        </a>
+                        <a href="#pagefixes" class="toc-item">
+                            <span class="toc-number">08</span>
+                            <span class="toc-label">Page-Level Fixes</span>
                         </a>
                         <a href="#roadmap" class="toc-item">
                             <span class="toc-number">09</span>
                             <span class="toc-label">Improvement Plan</span>
+                        </a>
+                        <a href="#conclusion" class="toc-item">
+                            <span class="toc-number">10</span>
+                            <span class="toc-label">Conclusion</span>
                         </a>
                     </div>
                 </div>
@@ -1721,7 +1720,7 @@
             </section>
 
             <!-- Products & Segments -->
-            <section class="section reveal">
+            <section id="products" class="section reveal">
                 <div class="section-header">
                     <div class="section-label">Section 03</div>
                     <h2 class="section-title">Products & Customers</h2>
@@ -1757,7 +1756,7 @@
             </section>
 
             <!-- Strengths -->
-            <section class="section reveal">
+            <section id="strengths" class="section reveal">
                 <div class="section-header">
                     <div class="section-label">Section 04</div>
                     <h2 class="section-title">What's Working Well</h2>
@@ -1803,7 +1802,7 @@
             </section>
 
             <!-- Detailed Critique -->
-            <section class="section reveal">
+            <section id="critique" class="section reveal">
                 <div class="section-header">
                     <div class="section-label">Section 05</div>
                     <h2 class="section-title">Areas for Improvement</h2>
@@ -2209,7 +2208,7 @@
             </section>
 
             <!-- Page Recommendations -->
-            <section class="section reveal">
+            <section id="pagefixes" class="section reveal">
                 <div class="section-header">
                     <div class="section-label">Section 08</div>
                     <h2 class="section-title">Page-Level Fixes</h2>
@@ -2506,7 +2505,7 @@
             </section>
 
             <!-- Bottom Line -->
-            <section class="section reveal">
+            <section id="conclusion" class="section reveal">
                 <div class="section-header">
                     <div class="section-label">Section 10</div>
                     <h2 class="section-title">The Bottom Line</h2>
